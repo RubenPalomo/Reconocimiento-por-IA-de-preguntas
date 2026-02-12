@@ -35,7 +35,7 @@ const ControlPanel = ({
               size={22}
               fill="currentColor"
             />
-            <span>Start Analysis</span>
+            <span>{disabled ? "No API Key" : "Start Analysis"}</span>
           </div>
         )}
       </button>
