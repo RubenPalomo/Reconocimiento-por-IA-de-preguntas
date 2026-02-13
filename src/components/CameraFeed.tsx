@@ -5,6 +5,7 @@ interface CameraFeedProps {
   isActive: boolean;
   onStreamReady: (stream: MediaStream) => void;
   onError: (error: string) => void;
+  facingMode?: "user" | "environment";
 }
 
 export interface CameraHandle {
@@ -12,7 +13,7 @@ export interface CameraHandle {
 }
 
 const CameraFeed = forwardRef<CameraHandle, CameraFeedProps>(
-  ({ isActive, onStreamReady, onError }, ref) => {
+  ({ isActive, onStreamReady, onError, facingMode = "environment" }, ref) => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const streamRef = useRef<MediaStream | null>(null);
 
@@ -69,7 +70,7 @@ const CameraFeed = forwardRef<CameraHandle, CameraFeedProps>(
 
           const stream = await navigator.mediaDevices.getUserMedia({
             video: {
-              facingMode: "environment", // Prefer back camera on mobile
+              facingMode: facingMode, // Use the prop
               width: { ideal: 1280 },
               height: { ideal: 720 },
             },
@@ -113,7 +114,7 @@ const CameraFeed = forwardRef<CameraHandle, CameraFeedProps>(
           streamRef.current.getTracks().forEach((track) => track.stop());
         }
       };
-    }, [isActive, onStreamReady, onError]);
+    }, [isActive, onStreamReady, onError, facingMode]);
 
     return (
       <div className="relative aspect-video h-screen w-full rounded-lg border border-gray-700 bg-gray-900 shadow-xl">

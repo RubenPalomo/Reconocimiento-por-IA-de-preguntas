@@ -31,10 +31,7 @@ const ControlPanel = ({
           </div>
         ) : (
           <div className="flex items-center justify-center gap-3">
-            <Play
-              size={22}
-              fill="currentColor"
-            />
+            <Play size={22} fill="currentColor" />
             <span>{disabled ? "No API Key" : "Start Analysis"}</span>
           </div>
         )}
