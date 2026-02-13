@@ -96,13 +96,13 @@ export default function App() {
         <CameraFeed
           ref={cameraRef}
           isActive={true} // Keep camera active to allow setting up shot before analyzing
-          onStreamReady={() => { }}
+          onStreamReady={() => {}}
           onError={(err) => setError(err)}
           facingMode={facingMode}
         />
       </div>
       <SwitchCameraButton
-        onClick={() =>
+        switchCamera={() =>
           setFacingMode((prev) => (prev === "user" ? "environment" : "user"))
         }
       />

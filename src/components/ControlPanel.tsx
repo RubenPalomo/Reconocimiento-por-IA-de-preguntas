@@ -20,7 +20,7 @@ const ControlPanel = ({
         disabled={disabled}
         className={`w-full rounded-full py-5 text-lg font-semibold shadow-xl transition-all duration-200 ${
           !disabled
-            ? "bg-emerald-400 text-white shadow-emerald-500/30 hover:bg-emerald-500 active:scale-95"
+            ? "bg-emerald-400 text-white shadow-emerald-500/30 hover:bg-emerald-500 active:scale-95 active:bg-emerald-600"
             : "bg-gray-600 text-black"
         } `}
       >
@@ -31,8 +31,11 @@ const ControlPanel = ({
           </div>
         ) : (
           <div className="flex items-center justify-center gap-3">
-            <Play size={22} fill="currentColor" />
-            <span>{disabled ? "No API Key" : "Start Analysis"}</span>
+            <Play
+              size={22}
+              fill="currentColor"
+            />
+            <span>{disabled ? "No API Key" : "Go!"}</span>
           </div>
         )}
       </button>
